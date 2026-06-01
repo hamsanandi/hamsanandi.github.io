@@ -1,364 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hamsanandi</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Serif+Kannada:wght@400;600&display=swap" rel="stylesheet">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamsanandi | ಹಂಸಾನಂದಿ</title>
+  <style>
+    /* --- Design Tokens & Color Palette --- */
+    :root {
+      --bg-color: #fbfbf9;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --border-color: #e2e8f0;
+      --font-serif: 'Georgia', 'Noto Serif Kannada', serif;
+      --font-sans: 'Helvetica Neue', 'Arial', 'Noto Sans Kannada', sans-serif;
+    }
 
-:root {
-  --gold: #8b5e1a; --gold-light: #6b4510; --gold-dim: #a0783a;
-  --bg: #ffffff; --section-bg: #fdf9f3; --header-bg: #f5ede0;
-  --border: #d4c5a9; --border-light: #c0aa88;
-  --text: #1a1208; --meta: #8a7055;
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  --c1-base: #095555; --c1-light: #c8ebeb; --c1-mid: #3d9999;
-  --c2-base: #6e2510; --c2-light: #f5ddd5; --c2-mid: #b05c40;
-  --c3-base: #27266b; --c3-light: #b8b6ee; --c3-mid: #6a68be;
-  --c4-base: #1d4f2b; --c4-light: #d4ecda; --c4-mid: #4d9963;
-  --c5-base: #7a1f4a; --c5-light: #e8a8c8; --c5-mid: #c4608f;
-  --c6-base: #6b4400; --c6-light: #e8c87a; --c6-mid: #c49030;
-}
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 600px;
+    }
 
-body {
-  font-family: 'EB Garamond', serif;
-  background: var(--bg); color: var(--text);
-  max-width: 860px; margin: 0 auto;
-  padding: 0 0 60px; font-size: 16px; line-height: 1.6;
-}
+    .site-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
 
-/* ── Header ── */
-.page-header {
-  text-align: center; padding: 40px 20px 28px;
-  border-bottom: 1px solid var(--border); position: relative;
-}
-.page-header::after {
-  content: ''; display: block; height: 2px; width: 160px; margin: 0 auto;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%);
-}
-.site-name {
-  font-family: 'Cinzel', serif; font-size: 2rem;
-  letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase;
-}
-.site-name.kn {
-  font-family: 'Noto Serif Kannada', serif; letter-spacing: 0.06em;
-  text-transform: none; font-size: 1.9rem;
-}
-.site-tagline { font-size: 0.95em; color: var(--gold-dim); margin-top: 8px; font-style: italic; }
-.site-tagline.kn { font-family: 'Noto Sans Kannada', sans-serif; font-style: normal; }
+    .site-tagline {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 15px;
+    }
 
-/* ── Lang toggle ── */
-.lang-toggle {
-  position: absolute; top: 24px; right: 24px;
-  background: var(--header-bg); border: 1px solid var(--border-light);
-  border-radius: 20px; padding: 5px 4px; display: flex; gap: 3px;
-}
-.lang-btn {
-  font-size: 0.75rem; padding: 4px 10px; border-radius: 16px;
-  border: none; background: none; cursor: pointer; color: var(--meta);
-  font-family: 'EB Garamond', serif; transition: all 0.18s;
-}
-.lang-btn.active { background: var(--gold); color: #fff; font-weight: 600; }
-.lang-btn.kn-btn { font-family: 'Noto Sans Kannada', sans-serif; font-size: 0.78rem; }
+    .site-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
 
-/* ── Intro ── */
-.intro {
-  max-width: 620px; margin: 24px auto 0;
-  font-size: 1em; line-height: 1.8; padding: 0 20px;
-  color: var(--meta); text-align: center;
-}
-.intro.kn { font-family: 'Noto Sans Kannada', sans-serif; }
+    .section-divider {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin: 30px 0;
+    }
 
-/* ── Section heading ── */
-.section-heading {
-  font-family: 'Cinzel', serif; font-size: 0.65rem;
-  letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--meta); text-align: center; margin: 36px 0 20px;
-}
-.section-heading.kn {
-  font-family: 'Noto Sans Kannada', sans-serif; font-size: 0.85rem;
-  letter-spacing: 0.05em; text-transform: none;
-}
+    /* --- Language Toggle --- */
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-family: var(--font-serif);
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      border-bottom: 1px dashed var(--text-main);
+    }
 
-/* ── Card rows ── */
-.cards {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 16px; padding: 0 20px;
-}
-.cards-row2, .cards-row3 {
-  display: flex; justify-content: center;
-  gap: 16px; padding: 0 20px; margin-top: 16px;
-}
-.cards-row2 .card { width: calc(33.333% - 8px); }
-.cards-row3 .card { width: calc(33.333% - 8px); }
+    /* --- The 3-2-2 Clean Grid System --- */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr); /* 6 columns allow clean splitting for 3 and 2 items */
+      gap: 24px;
+      max-width: 1080px;
+      width: 100%;
+    }
 
-/* ── Card ── */
-.card {
-  display: block; text-decoration: none;
-  background: var(--section-bg); border: 1px solid var(--border);
-  border-radius: 10px; padding: 0;
-  transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
-  position: relative; overflow: hidden;
-}
-.card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.card.soon { opacity: 0.55; cursor: default; pointer-events: none; }
+    /* Row 1: 3 Tiles (Each takes 2 of 6 columns) */
+    .explore-grid > *:nth-child(1),
+    .explore-grid > *:nth-child(2),
+    .explore-grid > *:nth-child(3) {
+      grid-column: span 2;
+    }
 
-.card-accent { height: 5px; width: 100%; display: block; }
-.card-body { padding: 20px 20px 18px; }
-.card-icon-wrap {
-  width: 42px; height: 42px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; margin-bottom: 14px;
-}
+    /* Row 2: 2 Tiles (Each takes 3 columns, or shifted with margins for staggering) */
+    .explore-grid > *:nth-child(4) {
+      grid-column: 2 / span 2; /* Inward shift */
+    }
+    .explore-grid > *:nth-child(5) {
+      grid-column: 4 / span 2;
+    }
 
-.card:hover .card-title { text-decoration: underline; }
-.card-title {
-  font-family: 'Cinzel', serif; font-size: 0.85rem;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  font-weight: 600; margin-bottom: 8px;
-}
-.card-title.kn {
-  font-family: 'Noto Serif Kannada', serif; letter-spacing: 0.04em;
-  text-transform: none; font-size: 0.95rem;
-}
-.card-desc { font-size: 0.88em; color: var(--meta); line-height: 1.6; }
-.card-desc.kn { font-family: 'Noto Sans Kannada', sans-serif; font-size: 0.82rem; }
-.card-arrow {
-  position: absolute; bottom: 16px; right: 18px;
-  font-size: 1rem; color: var(--border-light);
-  transition: color 0.18s, transform 0.18s;
-}
-.card:hover .card-arrow { color: var(--gold); transform: translateX(3px); }
+    /* Row 3: 2 Tiles (Perfectly matches Row 2 for a grounded 3-2-2 foundation) */
+    .explore-grid > *:nth-child(6) {
+      grid-column: 2 / span 2;
+    }
+    .explore-grid > *:nth-child(7) {
+      grid-column: 4 / span 2;
+    }
 
-/* Per-card accent colours */
-.card-c1 .card-accent { background: var(--c1-base); }
-.card-c1 .card-icon-wrap { background: var(--c1-light); }
-.card-c1 .card-title { color: var(--c1-base); }
-.card-c1:hover { border-color: var(--c1-mid); }
+    /* --- Elegant Card / Tile Styling --- */
+    .card-tile {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      min-height: 210px;
+      box-sizing: border-box;
+    }
 
-.card-c2 .card-accent { background: var(--c2-base); }
-.card-c2 .card-icon-wrap { background: var(--c2-light); }
-.card-c2 .card-title { color: var(--c2-base); }
-.card-c2:hover { border-color: var(--c2-mid); }
+    .card-tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.04);
+    }
 
-.card-c3 .card-accent { background: var(--c3-base); }
-.card-c3 .card-icon-wrap { background: var(--c3-light); }
-.card-c3 .card-title { color: var(--c3-base); }
-.card-c3:hover { border-color: var(--c3-mid); }
+    /* Distinct top accent borders */
+    .theme-compositions { border-top: 4px solid #4a7c59; }
+    .theme-articles     { border-top: 4px solid #68829e; }
+    .theme-books        { border-top: 4px solid #3f3d56; }
+    .theme-translations { border-top: 4px solid #8b5a2b; }
+    .theme-reviews      { border-top: 4px solid #b388eb; }
+    .theme-poetry       { border-top: 4px solid #5c3d2e; }
+    .theme-gamaka       { border-top: 4px solid #c2593f; }
 
-.card-c4 .card-accent { background: var(--c4-base); }
-.card-c4 .card-icon-wrap { background: var(--c4-light); }
-.card-c4 .card-title { color: var(--c4-base); }
-.card-c4:hover { border-color: var(--c4-mid); }
+    /* Icon Wrappers with soft tinted background matching accent */
+    .card-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
 
-.card-c5 .card-accent { background: var(--c5-base); }
-.card-c5 .card-icon-wrap { background: var(--c5-light); }
-.card-c5 .card-title { color: var(--c5-base); }
-.card-c5:hover { border-color: var(--c5-mid); }
+    .theme-compositions .card-icon-wrapper { background-color: #eef5f0; color: #4a7c59; }
+    .theme-articles .card-icon-wrapper     { background-color: #f0f4f8; color: #68829e; }
+    .theme-books .card-icon-wrapper        { background-color: #f1f0f5; color: #3f3d56; }
+    .theme-translations .card-icon-wrapper { background-color: #f7f1eb; color: #8b5a2b; }
+    .theme-reviews .card-icon-wrapper      { background-color: #f6f0fa; color: #b388eb; }
+    .theme-poetry .card-icon-wrapper       { background-color: #f5f0ee; color: #5c3d2e; }
+    .theme-gamaka .card-icon-wrapper       { background-color: #f9f0ee; color: #c2593f; }
 
-.card-c6 .card-accent { background: var(--c6-base); }
-.card-c6 .card-icon-wrap { background: var(--c6-light); }
-.card-c6 .card-title { color: var(--c6-base); }
-.card-c6:hover { border-color: var(--c6-mid); }
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+    }
 
-/* ── Coming soon badge ── */
-.soon-badge {
-  display: inline-block; margin-top: 8px; padding: 2px 8px;
-  font-size: 0.7em; border: 1px solid var(--border-light); border-radius: 4px;
-  color: var(--meta); font-family: 'EB Garamond', serif; letter-spacing: 0.08em;
-}
-.soon-badge.kn { font-family: 'Noto Sans Kannada', sans-serif; }
+    .card-description {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 0 20px 0;
+      flex-grow: 1;
+    }
 
-/* ── Divider & About ── */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-  margin: 48px 20px 0;
-}
-.about-section {
-  max-width: 620px; margin: 32px auto 0; padding: 0 20px;
-  line-height: 1.8; font-size: 0.95em; color: var(--text); text-align: center;
-}
-.about-section.kn { font-family: 'Noto Sans Kannada', sans-serif; font-size: 0.9em; }
-.about-title {
-  font-family: 'Cinzel', serif; font-size: 0.75rem;
-  letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
-}
-.about-title.kn {
-  font-family: 'Noto Serif Kannada', serif; letter-spacing: 0.05em;
-  text-transform: none; font-size: 1rem;
-}
-a { color: var(--gold-light); text-decoration: none; }
-a:hover { text-decoration: underline; }
-footer { text-align: center; color: var(--meta); margin-top: 24px; font-size: 0.82em; }
-footer.kn { font-family: 'Noto Sans Kannada', sans-serif; }
-</style>
+    .card-arrow {
+      text-align: right;
+      color: #cbd5e1;
+      font-size: 1.3rem;
+      transition: color 0.2s ease;
+      margin-top: auto;
+    }
+
+    .card-tile:hover .card-arrow {
+      color: var(--text-main);
+    }
+
+    /* --- Responsive Queries --- */
+    @media (max-width: 900px) {
+      .explore-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .explore-grid > * {
+        grid-column: auto !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .explore-grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 20px 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="page-header">
-  <div class="lang-toggle" id="langToggle">
-    <button class="lang-btn active" id="btnEN">EN</button>
-    <button class="lang-btn kn-btn" id="btnKN">ಕನ್ನಡ</button>
-  </div>
-  <div class="site-name" id="siteName">Hamsanandi</div>
-  <div class="site-tagline en" id="siteTagline">A curated space for music, literature &amp; culture</div>
-</div>
+  <a href="#kannada" class="lang-toggle" onclick="toggleLanguage()">[ಕನ್ನಡ]</a>
 
-<p class="intro" id="introText">Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.</p>
+  <header id="site-header">
+    <h1 class="site-title">Hamsanandi</h1>
+    <p class="site-tagline">A curated space for music, literature & culture</p>
+    <p class="site-description">
+      Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.
+    </p>
+  </header>
 
-<div class="section-heading" id="sectionHeading">Explore</div>
+  <div class="section-divider">Explore</div>
 
-<div id="cardsGrid"></div>
+  <main class="explore-grid" id="main-grid">
 
-<hr class="section-divider">
+    <a href="compositions.html" class="card-tile theme-compositions">
+      <div class="card-icon-wrapper">𝄞</div>
+      <h3 class="card-title" data-en="Compositions" data-kn="ಕೃತಿಗಳು">Compositions</h3>
+      <p class="card-description" data-en="Original compositions in the Karnataka Sangeeta tradition — geete, varṇa, swarajati, kriti and more." data-kn="ಕರ್ನಾಟಕ ಸಂಗೀತ ಶೈಲಿಯ ಸ್ವಯಂ ರಚಿತ ಕೃತಿಗಳು — ಗೀತೆ, ವರ್ಣ, ಸ್ವರಜತಿ, ಕೃತಿ ಮತ್ತು ಇತರ ಪ್ರಬಂಧಗಳು.">Original compositions in the Karnataka Sangeeta tradition — geete, varṇa, swarajati, kriti and more.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-<section class="about-section" id="aboutSection">
-  <div class="about-title" id="aboutTitle">About</div>
-  <p id="aboutText">Ramaprasad KV is a vaggeyakara, translator, and author working within the Karnataka Sangeeta and Kannada literary traditions. This site brings together his original compositions, translations, and writings.</p>
-  <p style="margin-top:10px;">Instagram: <a href="https://www.instagram.com/hamsanandi" target="_blank">@hamsanandi</a></p>
-</section>
+    <a href="articles.html" class="card-tile theme-articles">
+      <div class="card-icon-wrapper">✒</div>
+      <h3 class="card-title" data-en="Articles" data-kn="ಲೇಖನಗಳು">Articles</h3>
+      <p class="card-description" data-en="Essays and articles on Karnataka Sangeeta, aesthetics, and Kannada literature." data-kn="ಕರ್ನಾಟಕ ಸಂಗೀತ, ಸೌಂದರ್ಯಮೀಮಾಂಸೆ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಕುರಿತ ಪ್ರಬಂಧಗಳು ಹಾಗೂ ಲೇಖನಗಳು.">Essays and articles on Karnataka Sangeeta, aesthetics, and Kannada literature.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-<footer id="footerEl">Hosted on GitHub Pages</footer>
+    <a href="books.html" class="card-tile theme-books">
+      <div class="card-icon-wrapper">📖</div>
+      <h3 class="card-title" data-en="Books" data-kn="ಪುಸ್ತಕಗಳು">Books</h3>
+      <p class="card-description" data-en="Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more." data-kn="ಪ್ರಕಟಿತ ಕನ್ನಡ ಪುಸ್ತಕಗಳು — ಹಂಸನಾದ, ಅಮರುಶತಕ, ಮುದ್ದುರಂಗನ ಚೌಪದಿಗಳು ಮತ್ತು ಇತರೆ.">Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-<script>
-const STR = {
-  en: {
-    siteName: "Hamsanandi", siteNameClass: "site-name",
-    tagline: "A curated space for music, literature & culture",
-    taglineClass: "site-tagline en",
-    intro: "Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.",
-    introClass: "intro",
-    sectionHeading: "Explore", sectionHeadingClass: "section-heading",
-    aboutTitle: "About", aboutTitleClass: "about-title",
-    aboutSectionClass: "about-section",
-    aboutText: "Ramaprasad KV is a vaggeyakara, translator, and author working within the Karnataka Sangeeta and Kannada literary traditions. This site brings together his original compositions, translations, and writings.",
-    footer: "Hosted on GitHub Pages", footerClass: "",
-    soon: "Coming soon", soonClass: "soon-badge"
-  },
-  kn: {
-    siteName: "ಹಂಸಾನಂದಿ", siteNameClass: "site-name kn",
-    tagline: "ಸಂಗೀತ, ಸಾಹಿತ್ಯ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಸಂಗ್ರಹ",
-    taglineClass: "site-tagline kn",
-    intro: "ಕರ್ನಾಟಕ ಸಂಗೀತ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯ ರಚನೆಗಳು, ಅನುವಾದಗಳು ಮತ್ತು ಬರಹಗಳ ಸಂಗ್ರಹ.",
-    introClass: "intro kn",
-    sectionHeading: "ವಿಭಾಗಗಳು", sectionHeadingClass: "section-heading kn",
-    aboutTitle: "ರಚನಕಾರರ ಕುರಿತು", aboutTitleClass: "about-title kn",
-    aboutSectionClass: "about-section kn",
-    aboutText: "ರಾಮಪ್ರಸಾದ್ ಕೆ.ವಿ. ಅವರು ಕರ್ನಾಟಕ ಸಂಗೀತ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಆಸಕ್ತರಾದ ಗಮಕಿ, ವಾಗ್ಗೇಯಕಾರು, ಅನುವಾದಕ ಮತ್ತು ಲೇಖಕರು. ಈ ತಾಣದಲ್ಲಿ ಅವರ ರಚನೆಗಳು, ಅನುವಾದಗಳು ಮತ್ತು ಬರಹಗಳನ್ನು ಒಟ್ಟುಗೂಡಿಸಲಾಗಿದೆ.",
-    footer: "GitHub Pages ನಲ್ಲಿ ಪ್ರಕಾಶಿತ", footerClass: "kn",
-    soon: "ಸದ್ಯದಲ್ಲೇ ಬರಲಿವೆ", soonClass: "soon-badge kn"
-  }
-};
+    <a href="translations.html" class="card-tile theme-translations">
+      <div class="card-icon-wrapper">✦</div>
+      <h3 class="card-title" data-en="Translations" data-kn="ಅನುವಾದಗಳು">Translations</h3>
+      <p class="card-description" data-en="Literary translations from Sanskrit and other classical languages into Kannada and English." data-kn="ಸಂಸ್ಕೃತ ಹಾಗೂ ಇತರ ಶಾಸ್ತ್ರೀಯ ಭಾಷೆಗಳಿಂದ ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ಗೆ ಸಾಹಿತ್ಯಿಕ ಅನುವಾದಗಳು.">Literary translations from Sanskrit and other classical languages into Kannada and English.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-const CARDS = [
-  /* ── Row 1 ── */
-  { icon:"𝄞", colorClass:"card-c1", url:"https://hamsanandi.github.io/compositions/",
-    live:true, row:1,
-    en:{ title:"Compositions", desc:"Original compositions in the Karnataka Sangeeta tradition — geete, varṇa, swarajati, kriti and more." },
-    kn:{ title:"ರಚನೆಗಳು", desc:"ಕರ್ನಾಟಕ ಸಂಗೀತ ಪರಂಪರೆಯ ಮೂಲ ರಚನೆಗಳು — ಗೀತೆ, ವರ್ಣ, ಸ್ವರಜತಿ, ಕೃತಿ ಮತ್ತು ಇತರ ಪ್ರಕಾರಗಳು." } },
-  { icon:"✒", colorClass:"card-c4", url:"https://hamsanandi.github.io/articles/",
-    live:true, row:1,
-    en:{ title:"Articles", desc:"Essays and articles on Karnataka Sangeeta, aesthetics, and Kannada literature." },
-    kn:{ title:"ಲೇಖನಗಳು", desc:"ಕರ್ನಾಟಕ ಸಂಗೀತ, ಸೌಂದರ್ಯಶಾಸ್ತ್ರ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯದ ಕುರಿತು ಪ್ರಬಂಧಗಳು ಮತ್ತು ಲೇಖನಗಳು." } },
-  { icon:"📖", colorClass:"card-c3", url:"https://hamsanandi.github.io/books/",
-    live:true, row:1,
-    en:{ title:"Books", desc:"Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more." },
-    kn:{ title:"ಪುಸ್ತಕಗಳು", desc:"ಪ್ರಕಟಿತ ಕನ್ನಡ ಪುಸ್ತಕಗಳು — ಹಂಸನಾದ, ಅಮರುಶತಕ, ಮುದ್ದುರಂಗನ ಚೌಪದಿಗಳು ಮತ್ತು ಇತರ ಕೃತಿಗಳು." } },
+    <a href="reviews.html" class="card-tile theme-reviews">
+      <div class="card-icon-wrapper">▶</div>
+      <h3 class="card-title" data-en="Reviews" data-kn="ವಿಮರ್ಶೆಗಳು">Reviews</h3>
+      <p class="card-description" data-en="Book reviews and literary commentary — written articles and video reviews on YouTube." data-kn="ಪುಸ್ತಕ ವಿಮರ್ಶೆ ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ಚರ್ಚೆಗಳು — ಬರಹಗಳು ಮತ್ತು ಯುಟ್ಯೂಬ್ ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು.">Book reviews and literary commentary — written articles and video reviews on YouTube.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-  /* ── Row 2 ── */
-  { icon:"✦", colorClass:"card-c2", url:"https://hamsanandi.github.io/translations/",
-    live:true, row:2,
-    en:{ title:"Translations", desc:"Literary translations from Sanskrit and other classical languages into Kannada and English." },
-    kn:{ title:"ಅನುವಾದಗಳು", desc:"ಸಂಸ್ಕೃತ ಮತ್ತು ಇತರ ಶಾಸ್ತ್ರೀಯ ಭಾಷೆಗಳಿಂದ ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ಗೆ ಸಾಹಿತ್ಯಿಕ ಅನುವಾದಗಳು." } },
-  { icon:"▶", colorClass:"card-c5", url:"https://hamsanandi.github.io/reviews/",
-    live:false, row:2,
-    en:{ title:"Reviews", desc:"Book reviews and literary commentary — written articles and video reviews on YouTube." },
-    kn:{ title:"ವಿಮರ್ಶೆಗಳು", desc:"ಪುಸ್ತಕ ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ವಿಶ್ಲೇಷಣೆ — ಲೇಖನಗಳು ಮತ್ತು YouTube ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು." } },
+    <a href="poetry.html" class="card-tile theme-poetry">
+      <div class="card-icon-wrapper">◈</div>
+      <h3 class="card-title" data-en="Metrical Poetry" data-kn="ಛಂದೋಬದ್ಧ ಕಾವ್ಯ">Metrical Poetry</h3>
+      <p class="card-description" data-en="Original Kannada verse in classical metres — chandas, shatpadi, and related forms." data-kn="ಶಾಸ್ತ್ರೀಯ ಛಂದಸ್ಸು, ಷಟ್ಪದಿ ಮುಂತಾದ ಪ್ರಕಾರಗಳಲ್ಲಿ ಮೂಡಿಬಂದ ಕನ್ನಡ ಕವಿತೆಗಳು.">Original Kannada verse in classical metres — chandas, shatpadi, and related forms.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-  /* ── Row 3 ── */
-  { icon:"◈", colorClass:"card-c6", url:"https://hamsanandi.github.io/poetry/",
-    live:true, row:3,
-    en:{ title:"Metrical Poetry", desc:"Original Kannada verse in classical metres — chandas, shatpadi, and related forms." },
-    kn:{ title:"ಛಂದೋಬದ್ಧ ಕಾವ್ಯ", desc:"ಶಾಸ್ತ್ರೀಯ ಛಂದಸ್ಸಿನಲ್ಲಿ ಮೂಲ ಕನ್ನಡ ಕಾವ್ಯ — ಛಂದಸ್ಸು, ಷಟ್ಪದಿ ಮತ್ತು ಇತರ ಪ್ರಕಾರಗಳು." } }
-];
+    <a href="gamaka-vachana.html" class="card-tile theme-gamaka">
+      <div class="card-icon-wrapper">📜</div>
+      <h3 class="card-title" data-en="Gamaka Vachana" data-kn="ಗಮಕ ವಾಚನ">Gamaka Vachana</h3>
+      <p class="card-description" data-en="Artistic rendering, notation, and textual analysis of classical Kannada poetry recitation traditions." data-kn="ಶಾಸ್ತ್ರೀಯ ಕನ್ನಡ ಕಾವ್ಯ ವಾಚನ ಪ್ರಕಾರದ ಕಲಾತ್ಮಕ ಪ್ರಸ್ತುತಿ, ಸ್ವರ ಸಂಯೋಜನೆ ಮತ್ತು ವಿಶ್ಲೇಷಣೆ.">Artistic rendering, notation, and textual analysis of classical Kannada poetry recitation traditions.</p>
+      <div class="card-arrow">→</div>
+    </a>
 
-let lang = 'en';
+  </main>
 
-function renderCards(l) {
-  const s = STR[l];
-  const grid = document.getElementById('cardsGrid');
-  grid.innerHTML = '';
-
-  // Row 1 — 3-column grid
-  const row1el = document.createElement('div');
-  row1el.className = 'cards';
-  CARDS.filter(c => c.row === 1).forEach(c => row1el.appendChild(buildCard(c, l, s)));
-  grid.appendChild(row1el);
-
-  // Row 2 — 2 cards centred
-  const row2el = document.createElement('div');
-  row2el.className = 'cards-row2';
-  CARDS.filter(c => c.row === 2).forEach(c => row2el.appendChild(buildCard(c, l, s)));
-  grid.appendChild(row2el);
-
-  // Row 3 — 1 card centred
-  const row3el = document.createElement('div');
-  row3el.className = 'cards-row3';
-  CARDS.filter(c => c.row === 3).forEach(c => row3el.appendChild(buildCard(c, l, s)));
-  grid.appendChild(row3el);
-}
-
-function buildCard(c, l, s) {
-  const card = document.createElement(c.live ? 'a' : 'div');
-  card.className = 'card ' + c.colorClass + (c.live ? '' : ' soon');
-  if (c.live) card.href = c.url;
-  const titleClass = 'card-title' + (l === 'kn' ? ' kn' : '');
-  const descClass  = 'card-desc'  + (l === 'kn' ? ' kn' : '');
-  card.innerHTML = `
-    <span class="card-accent"></span>
-    <div class="card-body">
-      <div class="card-icon-wrap">${c.icon}</div>
-      <div class="${titleClass}">${c[l].title}</div>
-      <div class="${descClass}">${c[l].desc}</div>
-      ${!c.live ? `<span class="${s.soonClass}">${s.soon}</span>` : ''}
-      ${c.live  ? '<span class="card-arrow">→</span>' : ''}
-    </div>`;
-  return card;
-}
-
-function applyLang(l) {
-  const s = STR[l];
-  document.getElementById('siteName').textContent        = s.siteName;
-  document.getElementById('siteName').className          = s.siteNameClass;
-  document.getElementById('siteTagline').textContent     = s.tagline;
-  document.getElementById('siteTagline').className       = s.taglineClass;
-  document.getElementById('introText').textContent       = s.intro;
-  document.getElementById('introText').className         = s.introClass;
-  document.getElementById('sectionHeading').textContent  = s.sectionHeading;
-  document.getElementById('sectionHeading').className    = s.sectionHeadingClass;
-  document.getElementById('aboutTitle').textContent      = s.aboutTitle;
-  document.getElementById('aboutTitle').className        = s.aboutTitleClass;
-  document.getElementById('aboutSection').className      = s.aboutSectionClass;
-  document.getElementById('aboutText').textContent       = s.aboutText;
-  document.getElementById('footerEl').textContent        = s.footer;
-  document.getElementById('footerEl').className          = 'footer ' + (s.footerClass || '');
-  document.getElementById('btnEN').classList.toggle('active', l === 'en');
-  document.getElementById('btnKN').classList.toggle('active', l === 'kn');
-  renderCards(l);
-}
-
-document.getElementById('langToggle').addEventListener('click', e => {
-  const btn = e.target.closest('.lang-btn');
-  if (!btn) return;
-  lang = btn.id === 'btnKN' ? 'kn' : 'en';
-  applyLang(lang);
-});
-
-applyLang('en');
-</script>
+  <script>
+    let currentLang = 'en';
+    function toggleLanguage() {
+      const btn = document.querySelector('.lang-toggle');
+      const titles = document.querySelectorAll('[data-en]');
+      const descriptions = document.querySelectorAll('[data-kn]');
+      
+      if (currentLang === 'en') {
+        currentLang = 'kn';
+        btn.textContent = '[EN]';
+        document.getElementById('site-header').innerHTML = `
+          <h1 class="site-title">ಹಂಸಾನಂದಿ</h1>
+          <p class="site-tagline">ಸಂಗೀತ, ಸಾಹಿತ್ಯ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಆಯ್ದ ತಾಣ</p>
+          <p class="site-description">ಕರ್ನಾಟಕ ಸಂಗೀತ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯ ಮೂಲ ಕೃತಿಗಳು, ಅನುವಾದಗಳು ಮತ್ತು ಬರಹಗಳು.</p>
+        `;
+        titles.forEach(el => el.textContent = el.getAttribute('data-kn'));
+        descriptions.forEach(el => el.textContent = el.getAttribute('data-kn'));
+      } else {
+        currentLang = 'en';
+        btn.textContent = '[ಕನ್ನಡ]';
+        document.getElementById('site-header').innerHTML = `
+          <h1 class="site-title">Hamsanandi</h1>
+          <p class="site-tagline">A curated space for music, literature & culture</p>
+          <p class="site-description">Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.</p>
+        `;
+        titles.forEach(el => el.textContent = el.getAttribute('data-en'));
+        descriptions.forEach(el => el.textContent = el.getAttribute('data-en'));
+      }
+    }
+  </script>
 </body>
 </html>
