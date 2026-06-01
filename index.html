@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamsanandi | ಹಂಸಾನಂದಿ</title>
   <style>
-    /* --- Design Tokens & Color Palette --- */
+    /* --- Core Design Tokens --- */
     :root {
       --bg-color: #fbfbf9;
       --text-main: #2d3748;
@@ -72,33 +72,34 @@
       color: var(--text-main);
       font-size: 0.95rem;
       border-bottom: 1px dashed var(--text-main);
+      cursor: pointer;
     }
 
-    /* --- The 3-2-2 Clean Grid System --- */
+    /* --- Symmetric 3-2-2 Grid Architecture --- */
     .explore-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr); /* 6 columns allow clean splitting for 3 and 2 items */
+      grid-template-columns: repeat(6, 1fr); /* 6-column base allows clean row splitting */
       gap: 24px;
       max-width: 1080px;
       width: 100%;
     }
 
-    /* Row 1: 3 Tiles (Each takes 2 of 6 columns) */
+    /* Row 1: 3 Tiles spanning 2 columns each */
     .explore-grid > *:nth-child(1),
     .explore-grid > *:nth-child(2),
     .explore-grid > *:nth-child(3) {
       grid-column: span 2;
     }
 
-    /* Row 2: 2 Tiles (Each takes 3 columns, or shifted with margins for staggering) */
+    /* Row 2: 2 Tiles shifted inward by 1 column for elegant centering */
     .explore-grid > *:nth-child(4) {
-      grid-column: 2 / span 2; /* Inward shift */
+      grid-column: 2 / span 2;
     }
     .explore-grid > *:nth-child(5) {
       grid-column: 4 / span 2;
     }
 
-    /* Row 3: 2 Tiles (Perfectly matches Row 2 for a grounded 3-2-2 foundation) */
+    /* Row 3: 2 Tiles matching Row 2 exactly to form a stable base */
     .explore-grid > *:nth-child(6) {
       grid-column: 2 / span 2;
     }
@@ -106,7 +107,7 @@
       grid-column: 4 / span 2;
     }
 
-    /* --- Elegant Card / Tile Styling --- */
+    /* --- Premium Card Styling --- */
     .card-tile {
       background-color: #ffffff;
       border: 1px solid var(--border-color);
@@ -126,16 +127,16 @@
       box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.04);
     }
 
-    /* Distinct top accent borders */
-    .theme-compositions { border-top: 4px solid #4a7c59; }
-    .theme-articles     { border-top: 4px solid #68829e; }
-    .theme-books        { border-top: 4px solid #3f3d56; }
-    .theme-translations { border-top: 4px solid #8b5a2b; }
-    .theme-reviews      { border-top: 4px solid #b388eb; }
-    .theme-poetry       { border-top: 4px solid #5c3d2e; }
-    .theme-gamaka       { border-top: 4px solid #c2593f; }
+    /* Precise Top Accent Borders */
+    .theme-compositions { border-top: 4px solid #4a7c59; } /* Sage Green */
+    .theme-articles     { border-top: 4px solid #68829e; } /* Slate Blue */
+    .theme-books        { border-top: 4px solid #3f3d56; } /* Deep Indigo */
+    .theme-translations { border-top: 4px solid #8b5a2b; } /* Muted Amber */
+    .theme-reviews      { border-top: 4px solid #b388eb; } /* Soft Purple */
+    .theme-poetry       { border-top: 4px solid #5c3d2e; } /* Deep Earth Brown */
+    .theme-gamaka       { border-top: 4px solid #c2593f; } /* Classical Terracotta */
 
-    /* Icon Wrappers with soft tinted background matching accent */
+    /* Soft Icon Background Tints */
     .card-icon-wrapper {
       width: 44px;
       height: 44px;
@@ -183,7 +184,7 @@
       color: var(--text-main);
     }
 
-    /* --- Responsive Queries --- */
+    /* --- Responsive Architecture --- */
     @media (max-width: 900px) {
       .explore-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -205,10 +206,10 @@
 </head>
 <body>
 
-  <a href="#kannada" class="lang-toggle" onclick="toggleLanguage()">[ಕನ್ನಡ]</a>
+  <a class="lang-toggle" onclick="toggleLanguage()">[ಕನ್ನಡ]</a>
 
   <header id="site-header">
-    <h1 class="site-title">Hamsanandi</h1>
+    <h1 class="site-title">HAMSANANDI</h1>
     <p class="site-tagline">A curated space for music, literature & culture</p>
     <p class="site-description">
       Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.
@@ -217,53 +218,53 @@
 
   <div class="section-divider">Explore</div>
 
-  <main class="explore-grid" id="main-grid">
+  <main class="explore-grid">
 
     <a href="compositions.html" class="card-tile theme-compositions">
       <div class="card-icon-wrapper">𝄞</div>
-      <h3 class="card-title" data-en="Compositions" data-kn="ಕೃತಿಗಳು">Compositions</h3>
+      <h3 class="card-title" data-en="COMPOSITIONS" data-kn="ಕೃತಿಗಳು">COMPOSITIONS</h3>
       <p class="card-description" data-en="Original compositions in the Karnataka Sangeeta tradition — geete, varṇa, swarajati, kriti and more." data-kn="ಕರ್ನಾಟಕ ಸಂಗೀತ ಶೈಲಿಯ ಸ್ವಯಂ ರಚಿತ ಕೃತಿಗಳು — ಗೀತೆ, ವರ್ಣ, ಸ್ವರಜತಿ, ಕೃತಿ ಮತ್ತು ಇತರ ಪ್ರಬಂಧಗಳು.">Original compositions in the Karnataka Sangeeta tradition — geete, varṇa, swarajati, kriti and more.</p>
       <div class="card-arrow">→</div>
     </a>
 
     <a href="articles.html" class="card-tile theme-articles">
       <div class="card-icon-wrapper">✒</div>
-      <h3 class="card-title" data-en="Articles" data-kn="ಲೇಖನಗಳು">Articles</h3>
+      <h3 class="card-title" data-en="ARTICLES" data-kn="ಲೇಖನಗಳು">ARTICLES</h3>
       <p class="card-description" data-en="Essays and articles on Karnataka Sangeeta, aesthetics, and Kannada literature." data-kn="ಕರ್ನಾಟಕ ಸಂಗೀತ, ಸೌಂದರ್ಯಮೀಮಾಂಸೆ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಕುರಿತ ಪ್ರಬಂಧಗಳು ಹಾಗೂ ಲೇಖನಗಳು.">Essays and articles on Karnataka Sangeeta, aesthetics, and Kannada literature.</p>
       <div class="card-arrow">→</div>
     </a>
 
     <a href="books.html" class="card-tile theme-books">
       <div class="card-icon-wrapper">📖</div>
-      <h3 class="card-title" data-en="Books" data-kn="ಪುಸ್ತಕಗಳು">Books</h3>
+      <h3 class="card-title" data-en="BOOKS" data-kn="ಪುಸ್ತಕಗಳು">ಪುಸ್ತಕಗಳು</h3>
       <p class="card-description" data-en="Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more." data-kn="ಪ್ರಕಟಿತ ಕನ್ನಡ ಪುಸ್ತಕಗಳು — ಹಂಸನಾದ, ಅಮರುಶತಕ, ಮುದ್ದುರಂಗನ ಚೌಪದಿಗಳು ಮತ್ತು ಇತರೆ.">Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more.</p>
       <div class="card-arrow">→</div>
     </a>
 
     <a href="translations.html" class="card-tile theme-translations">
       <div class="card-icon-wrapper">✦</div>
-      <h3 class="card-title" data-en="Translations" data-kn="ಅನುವಾದಗಳು">Translations</h3>
+      <h3 class="card-title" data-en="TRANSLATIONS" data-kn="ಅನುವಾದಗಳು">TRANSLATIONS</h3>
       <p class="card-description" data-en="Literary translations from Sanskrit and other classical languages into Kannada and English." data-kn="ಸಂಸ್ಕೃತ ಹಾಗೂ ಇತರ ಶಾಸ್ತ್ರೀಯ ಭಾಷೆಗಳಿಂದ ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ಗೆ ಸಾಹಿತ್ಯಿಕ ಅನುವಾದಗಳು.">Literary translations from Sanskrit and other classical languages into Kannada and English.</p>
       <div class="card-arrow">→</div>
     </a>
 
     <a href="reviews.html" class="card-tile theme-reviews">
       <div class="card-icon-wrapper">▶</div>
-      <h3 class="card-title" data-en="Reviews" data-kn="ವಿಮರ್ಶೆಗಳು">Reviews</h3>
+      <h3 class="card-title" data-en="REVIEWS" data-kn="ವಿಮರ್ಶೆಗಳು">REVIEWS</h3>
       <p class="card-description" data-en="Book reviews and literary commentary — written articles and video reviews on YouTube." data-kn="ಪುಸ್ತಕ ವಿಮರ್ಶೆ ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ಚರ್ಚೆಗಳು — ಬರಹಗಳು ಮತ್ತು ಯುಟ್ಯೂಬ್ ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು.">Book reviews and literary commentary — written articles and video reviews on YouTube.</p>
       <div class="card-arrow">→</div>
     </a>
 
     <a href="poetry.html" class="card-tile theme-poetry">
       <div class="card-icon-wrapper">◈</div>
-      <h3 class="card-title" data-en="Metrical Poetry" data-kn="ಛಂದೋಬದ್ಧ ಕಾವ್ಯ">Metrical Poetry</h3>
+      <h3 class="card-title" data-en="METRICAL POETRY" data-kn="ಛಂದೋಬದ್ಧ ಕಾವ್ಯ">METRICAL POETRY</h3>
       <p class="card-description" data-en="Original Kannada verse in classical metres — chandas, shatpadi, and related forms." data-kn="ಶಾಸ್ತ್ರೀಯ ಛಂದಸ್ಸು, ಷಟ್ಪದಿ ಮುಂತಾದ ಪ್ರಕಾರಗಳಲ್ಲಿ ಮೂಡಿಬಂದ ಕನ್ನಡ ಕವಿತೆಗಳು.">Original Kannada verse in classical metres — chandas, shatpadi, and related forms.</p>
       <div class="card-arrow">→</div>
     </a>
 
     <a href="gamaka-vachana.html" class="card-tile theme-gamaka">
       <div class="card-icon-wrapper">📜</div>
-      <h3 class="card-title" data-en="Gamaka Vachana" data-kn="ಗಮಕ ವಾಚನ">Gamaka Vachana</h3>
+      <h3 class="card-title" data-en="GAMAKA VACHANA" data-kn="ಗಮಕ ವಾಚನ">GAMAKA VACHANA</h3>
       <p class="card-description" data-en="Artistic rendering, notation, and textual analysis of classical Kannada poetry recitation traditions." data-kn="ಶಾಸ್ತ್ರೀಯ ಕನ್ನಡ ಕಾವ್ಯ ವಾಚನ ಪ್ರಕಾರದ ಕಲಾತ್ಮಕ ಪ್ರಸ್ತುತಿ, ಸ್ವರ ಸಂಯೋಜನೆ ಮತ್ತು ವಿಶ್ಲೇಷಣೆ.">Artistic rendering, notation, and textual analysis of classical Kannada poetry recitation traditions.</p>
       <div class="card-arrow">→</div>
     </a>
@@ -291,7 +292,7 @@
         currentLang = 'en';
         btn.textContent = '[ಕನ್ನಡ]';
         document.getElementById('site-header').innerHTML = `
-          <h1 class="site-title">Hamsanandi</h1>
+          <h1 class="site-title">HAMSANANDI</h1>
           <p class="site-tagline">A curated space for music, literature & culture</p>
           <p class="site-description">Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.</p>
         `;
