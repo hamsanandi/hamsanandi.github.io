@@ -5,20 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamsanandi | ಹಂಸಾನಂದಿ</title>
   <style>
-    /* --- Core Design Tokens --- */
-    :root {
-      --bg-color: #fbfbf9;
-      --text-main: #2d3748;
-      --text-muted: #718096;
-      --border-color: #e2e8f0;
-      --font-serif: 'Georgia', 'Noto Serif Kannada', serif;
-      --font-sans: 'Helvetica Neue', 'Arial', 'Noto Sans Kannada', sans-serif;
-    }
-
+    /* --- Core Page Layout --- */
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-sans);
+      background-color: #fbfbf9;
+      color: #2d3748;
+      font-family: 'Helvetica Neue', Arial, 'Noto Sans Kannada', sans-serif;
       margin: 0;
       padding: 40px 20px;
       display: flex;
@@ -33,7 +24,7 @@
     }
 
     .site-title {
-      font-family: var(--font-serif);
+      font-family: Georgia, 'Noto Serif Kannada', serif;
       font-size: 2.2rem;
       letter-spacing: 0.1em;
       margin-bottom: 5px;
@@ -42,7 +33,7 @@
 
     .site-tagline {
       font-style: italic;
-      color: var(--text-muted);
+      color: #718096;
       font-size: 1.05rem;
       margin-bottom: 15px;
     }
@@ -50,74 +41,51 @@
     .site-description {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: var(--text-main);
     }
 
     .section-divider {
-      font-family: var(--font-serif);
+      font-family: Georgia, 'Noto Serif Kannada', serif;
       font-size: 0.85rem;
       letter-spacing: 0.3em;
-      color: var(--text-muted);
+      color: #718096;
       text-transform: uppercase;
       margin: 30px 0;
     }
 
-    /* --- Language Toggle --- */
     .lang-toggle {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-family: var(--font-serif);
+      font-family: Georgia, serif;
       text-decoration: none;
-      color: var(--text-main);
+      color: #2d3748;
       font-size: 0.95rem;
-      border-bottom: 1px dashed var(--text-main);
+      border-bottom: 1px dashed #2d3748;
       cursor: pointer;
     }
 
-    /* --- Symmetric 3-2-2 Grid Architecture --- */
+    /* --- Clean Staggered Flex Layout --- */
     .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr); /* 6-column base allows clean row splitting */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 24px;
-      max-width: 1080px;
+      max-width: 1000px;
       width: 100%;
     }
 
-    /* Row 1: 3 Tiles spanning 2 columns each */
-    .explore-grid > *:nth-child(1),
-    .explore-grid > *:nth-child(2),
-    .explore-grid > *:nth-child(3) {
-      grid-column: span 2;
-    }
-
-    /* Row 2: 2 Tiles shifted inward by 1 column for elegant centering */
-    .explore-grid > *:nth-child(4) {
-      grid-column: 2 / span 2;
-    }
-    .explore-grid > *:nth-child(5) {
-      grid-column: 4 / span 2;
-    }
-
-    /* Row 3: 2 Tiles matching Row 2 exactly to form a stable base */
-    .explore-grid > *:nth-child(6) {
-      grid-column: 2 / span 2;
-    }
-    .explore-grid > *:nth-child(7) {
-      grid-column: 4 / span 2;
-    }
-
-    /* --- Premium Card Styling --- */
+    /* --- Premium Base Card Styling --- */
     .card-tile {
       background-color: #ffffff;
-      border: 1px solid var(--border-color);
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 28px;
       display: flex;
       flex-direction: column;
       text-decoration: none;
-      color: var(--text-main);
+      color: #2d3748;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      width: 290px; /* Uniform width handles rows naturally */
       min-height: 210px;
       box-sizing: border-box;
     }
@@ -127,14 +95,14 @@
       box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.04);
     }
 
-    /* Precise Top Accent Borders */
-    .theme-compositions { border-top: 4px solid #4a7c59; } /* Sage Green */
-    .theme-articles     { border-top: 4px solid #68829e; } /* Slate Blue */
-    .theme-books        { border-top: 4px solid #3f3d56; } /* Deep Indigo */
-    .theme-translations { border-top: 4px solid #8b5a2b; } /* Muted Amber */
-    .theme-reviews      { border-top: 4px solid #b388eb; } /* Soft Purple */
-    .theme-poetry       { border-top: 4px solid #5c3d2e; } /* Deep Earth Brown */
-    .theme-gamaka       { border-top: 4px solid #c2593f; } /* Classical Terracotta */
+    /* Distinct Card Accent Top Borders */
+    .theme-compositions { border-top: 4px solid #4a7c59; }
+    .theme-articles     { border-top: 4px solid #68829e; }
+    .theme-books        { border-top: 4px solid #3f3d56; }
+    .theme-translations { border-top: 4px solid #8b5a2b; }
+    .theme-reviews      { border-top: 4px solid #b388eb; }
+    .theme-poetry       { border-top: 4px solid #5c3d2e; }
+    .theme-gamaka       { border-top: 4px solid #c2593f; } /* Unique color for Gamaka */
 
     /* Soft Icon Background Tints */
     .card-icon-wrapper {
@@ -157,8 +125,8 @@
     .theme-gamaka .card-icon-wrapper       { background-color: #f9f0ee; color: #c2593f; }
 
     .card-title {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-family: Georgia, 'Noto Serif Kannada', serif;
+      font-size: 1.1rem;
       letter-spacing: 0.08em;
       margin: 0 0 10px 0;
       text-transform: uppercase;
@@ -166,7 +134,7 @@
 
     .card-description {
       font-size: 0.92rem;
-      color: var(--text-muted);
+      color: #718096;
       line-height: 1.6;
       margin: 0 0 20px 0;
       flex-grow: 1;
@@ -181,25 +149,12 @@
     }
 
     .card-tile:hover .card-arrow {
-      color: var(--text-main);
+      color: #2d3748;
     }
 
-    /* --- Responsive Architecture --- */
-    @media (max-width: 900px) {
-      .explore-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .explore-grid > * {
-        grid-column: auto !important;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .explore-grid {
-        grid-template-columns: 1fr;
-      }
-      body {
-        padding: 20px 15px;
+    @media (max-width: 650px) {
+      .card-tile {
+        width: 100%;
       }
     }
   </style>
@@ -209,7 +164,7 @@
   <a class="lang-toggle" onclick="toggleLanguage()">[ಕನ್ನಡ]</a>
 
   <header id="site-header">
-    <h1 class="site-title">HAMSANANDI</h1>
+    <h1 class="site-title">Hamsanandi</h1>
     <p class="site-tagline">A curated space for music, literature & culture</p>
     <p class="site-description">
       Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.
@@ -236,7 +191,7 @@
 
     <a href="books.html" class="card-tile theme-books">
       <div class="card-icon-wrapper">📖</div>
-      <h3 class="card-title" data-en="BOOKS" data-kn="ಪುಸ್ತಕಗಳು">ಪುಸ್ತಕಗಳು</h3>
+      <h3 class="card-title" data-en="BOOKS" data-kn="ಪುಸ್ತಕಗಳು">BOOKS</h3>
       <p class="card-description" data-en="Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more." data-kn="ಪ್ರಕಟಿತ ಕನ್ನಡ ಪುಸ್ತಕಗಳು — ಹಂಸನಾದ, ಅಮರುಶತಕ, ಮುದ್ದುರಂಗನ ಚೌಪದಿಗಳು ಮತ್ತು ಇತರೆ.">Published Kannada books — Hamsanada, Amarushataka, Muddurangana Chaupadigalu, and more.</p>
       <div class="card-arrow">→</div>
     </a>
@@ -292,7 +247,7 @@
         currentLang = 'en';
         btn.textContent = '[ಕನ್ನಡ]';
         document.getElementById('site-header').innerHTML = `
-          <h1 class="site-title">HAMSANANDI</h1>
+          <h1 class="site-title">Hamsanandi</h1>
           <p class="site-tagline">A curated space for music, literature & culture</p>
           <p class="site-description">Original compositions, translations, and writings in the Karnataka Sangeeta and Kannada literary traditions.</p>
         `;
