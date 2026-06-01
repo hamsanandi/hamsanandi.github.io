@@ -20,6 +20,8 @@
   --c4-base: #1d4f2b; --c4-light: #d4ecda; --c4-mid: #4d9963;
   --c5-base: #7a1f4a; --c5-light: #e8a8c8; --c5-mid: #c4608f;
   --c6-base: #6b4400; --c6-light: #e8c87a; --c6-mid: #c49030;
+  --c7-base: #c2593f; --c7-light: #f9f0ee; --c7-mid: #d46a50;
+  --c8-base: #5a1837; --c8-light: #f3e6ec; --c8-mid: #934b6f;
 }
 
 body {
@@ -164,6 +166,16 @@ body {
 .card-c6 .card-title { color: var(--c6-base); }
 .card-c6:hover { border-color: var(--c6-mid); }
 
+.card-c7 .card-accent { background: var(--c7-base); }
+.card-c7 .card-icon-wrap { background: var(--c7-light); }
+.card-c7 .card-title { color: var(--c7-base); }
+.card-c7:hover { border-color: var(--c7-mid); }
+
+.card-c8 .card-accent { background: var(--c8-base); }
+.card-c8 .card-icon-wrap { background: var(--c8-light); }
+.card-c8 .card-title { color: var(--c8-base); }
+.card-c8:hover { border-color: var(--c8-mid); }
+
 /* ── Coming soon badge ── */
 .soon-badge {
   display: inline-block; margin-top: 8px; padding: 2px 8px;
@@ -270,20 +282,28 @@ const CARDS = [
     kn:{ title:"ಪುಸ್ತಕಗಳು", desc:"ಪ್ರಕಟಿತ ಕನ್ನಡ ಪುಸ್ತಕಗಳು — ಹಂಸನಾದ, ಅಮರುಶತಕ, ಮುದ್ದುರಂಗನ ಚೌಪದಿಗಳು ಮತ್ತು ಇತರ ಕೃತಿಗಳು." } },
 
   /* ── Row 2 ── */
-  { icon:"✦", colorClass:"card-c2", url:"https://hamsanandi.github.io/translations/",
+  { icon:"◈", colorClass:"card-c6", url:"https://hamsanandi.github.io/poetry/",
     live:true, row:2,
+    en:{ title:"Metrical Poetry", desc:"Original Kannada verse in classical metres — chandas, shatpadi, and related forms." },
+    kn:{ title:"ಛಂದೋಬದ್ಧ ಕಾವ್ಯ", desc:"ಶಾಸ್ತ್ರೀಯ ಛಂದಸ್ಸಿನಲ್ಲಿ ಮೂಲ ಕನ್ನಡ ಕಾವ್ಯ — ಛಂದಸ್ಸು, ಷಟ್ಪದಿ ಮತ್ತು ಇತರ ಪ್ರಕಾರಗಳು." } },
+  { icon:"🎭", colorClass:"card-c8", url:"https://hamsanandi.github.io/stage-productions/",
+    live:true, row:2,
+    en:{ title:"Stage Productions", desc:"Direction, music direction, scriptwriting, and performance design for cultural theatrical productions." },
+    kn:{ title:"ರಂಗಪ್ರಯೋಗಗಳು", desc:"ಸಾಂಸ್ಕೃತಿಕ ನಾಟಕ ಹಾಗೂ ರಂಗಪ್ರದರ್ಶನಗಳ ನಿರ್ದೇಶನ, ಸಂಗೀತ ಸಂಯೋಜನೆ, ಚಿತ್ರಕಥೆ ಮತ್ತು ಕಲಾತ್ಮಕ ಪ್ರಸ್ತುತಿ." } },
+  { icon:"📜", colorClass:"card-c7", url:"https://hamsanandi.github.io/gamaka-vachana/",
+    live:true, row:2,
+    en:{ title:"Gamaka Vachana", desc:"Artistic rendering, notation, and textual analysis of classical Kannada poetry recitation traditions." },
+    kn:{ title:"ಗಮಕ ವಾಚನ", desc:"ಶಾಸ್ತ್ರೀಯ ಕನ್ನಡ ಕಾವ್ಯ ವಾಚನ ಪ್ರಕಾರದ ಕಲಾತ್ಮಕ ಪ್ರಸ್ತುತಿ, ಸ್ವರ ಸಂಯೋಜನೆ ಮತ್ತು ವಿಶ್ಲೇಷಣೆ." } },
+
+  /* ── Row 3 ── */
+  { icon:"✦", colorClass:"card-c2", url:"https://hamsanandi.github.io/translations/",
+    live:true, row:3,
     en:{ title:"Translations", desc:"Literary translations from Sanskrit and other classical languages into Kannada and English." },
     kn:{ title:"ಅನುವಾದಗಳು", desc:"ಸಂಸ್ಕೃತ ಮತ್ತು ಇತರ ಶಾಸ್ತ್ರೀಯ ಭಾಷೆಗಳಿಂದ ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ಗೆ ಸಾಹಿತ್ಯಿಕ ಅನುವಾದಗಳು." } },
   { icon:"▶", colorClass:"card-c5", url:"https://hamsanandi.github.io/reviews/",
-    live:false, row:2,
-    en:{ title:"Reviews", desc:"Book reviews and literary commentary — written articles and video reviews on YouTube." },
-    kn:{ title:"ವಿಮರ್ಶೆಗಳು", desc:"ಪುಸ್ತಕ ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ವಿಶ್ಲೇಷಣೆ — ಲೇಖನಗಳು ಮತ್ತು YouTube ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು." } },
-
-  /* ── Row 3 ── */
-  { icon:"◈", colorClass:"card-c6", url:"https://hamsanandi.github.io/poetry/",
     live:true, row:3,
-    en:{ title:"Metrical Poetry", desc:"Original Kannada verse in classical metres — chandas, shatpadi, and related forms." },
-    kn:{ title:"ಛಂದೋಬದ್ಧ ಕಾವ್ಯ", desc:"ಶಾಸ್ತ್ರೀಯ ಛಂದಸ್ಸಿನಲ್ಲಿ ಮೂಲ ಕನ್ನಡ ಕಾವ್ಯ — ಛಂದಸ್ಸು, ಷಟ್ಪದಿ ಮತ್ತು ಇತರ ಪ್ರಕಾರಗಳು." } }
+    en:{ title:"Reviews", desc:"Book reviews and literary commentary — written articles and video reviews on YouTube." },
+    kn:{ title:"ವಿಮರ್ಶೆಗಳು", desc:"ಪುಸ್ತಕ ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ವಿಶ್ಲೇಷಣೆ — ಲೇಖನಗಳು ಮತ್ತು YouTube ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು." } }
 ];
 
 let lang = 'en';
@@ -299,13 +319,13 @@ function renderCards(l) {
   CARDS.filter(c => c.row === 1).forEach(c => row1el.appendChild(buildCard(c, l, s)));
   grid.appendChild(row1el);
 
-  // Row 2 — 2 cards centred
+  // Row 2 — 3 cards grid
   const row2el = document.createElement('div');
   row2el.className = 'cards-row2';
   CARDS.filter(c => c.row === 2).forEach(c => row2el.appendChild(buildCard(c, l, s)));
   grid.appendChild(row2el);
 
-  // Row 3 — 1 card centred
+  // Row 3 — 2 cards centred side-by-side
   const row3el = document.createElement('div');
   row3el.className = 'cards-row3';
   CARDS.filter(c => c.row === 3).forEach(c => row3el.appendChild(buildCard(c, l, s)));
