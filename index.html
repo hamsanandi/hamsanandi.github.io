@@ -31,9 +31,64 @@ body {
   padding: 0 0 60px; font-size: 16px; line-height: 1.6;
 }
 
+/* ── Top nav bar ── */
+.site-nav {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 42px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-home {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-home.kn {
+  font-family: 'Noto Serif Kannada', serif;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  font-size: 0.88rem;
+}
+.nav-home:hover { text-decoration: underline; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-link {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.78rem;
+  color: var(--meta);
+  text-decoration: none;
+  padding: 0 10px;
+  line-height: 42px;
+  white-space: nowrap;
+  border-left: 1px solid var(--border);
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link:first-child { border-left: none; }
+.nav-link:hover { color: var(--gold); background: rgba(139,94,26,0.06); }
+.nav-link.kn { font-family: 'Noto Sans Kannada', sans-serif; font-size: 0.72rem; }
+
 /* ── Header ── */
 .page-header {
-  text-align: center; padding: 40px 20px 28px;
+  text-align: center; padding: 36px 20px 24px;
   border-bottom: 1px solid var(--border); position: relative;
 }
 .page-header::after {
@@ -90,12 +145,17 @@ body {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 16px; padding: 0 20px;
 }
-.cards-row2, .cards-row3 {
-  display: flex; justify-content: center;
+.cards-row2 {
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 16px; padding: 0 20px; margin-top: 16px;
 }
-.cards-row2 .card { width: calc(33.333% - 8px); }
-.cards-row3 .card { width: calc(33.333% - 8px); }
+.cards-row3 {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px; padding: 0 20px; margin-top: 16px;
+  /* Constrain to same total width as a 3-col row so 2 cards don't stretch too wide */
+  max-width: calc(860px * 2 / 3 + 20px);
+  margin-left: auto; margin-right: auto;
+}
 
 /* ── Card ── */
 .card {
@@ -205,11 +265,38 @@ body {
 }
 a { color: var(--gold-light); text-decoration: none; }
 a:hover { text-decoration: underline; }
-footer { text-align: center; color: var(--meta); margin-top: 24px; font-size: 0.82em; }
+
+/* ── Footer ── */
+footer {
+  text-align: center; color: var(--meta);
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.80em;
+  padding-left: 20px; padding-right: 20px;
+}
 footer.kn { font-family: 'Noto Sans Kannada', sans-serif; }
+
+/* ── Responsive: collapse nav on small screens ── */
+@media (max-width: 600px) {
+  .site-nav { flex-wrap: wrap; padding: 8px 12px; min-height: unset; gap: 0; }
+  .nav-home { width: 100%; padding-bottom: 6px; line-height: 1.4; }
+  .nav-links { width: 100%; overflow-x: auto; }
+  .nav-link { font-size: 0.72rem; padding: 0 8px; line-height: 32px; }
+  .cards, .cards-row2 { grid-template-columns: repeat(2, 1fr); }
+  .cards-row3 { grid-template-columns: 1fr; max-width: 100%; }
+  .lang-toggle { position: static; margin: 12px auto 0; }
+  .page-header { padding: 24px 20px 20px; }
+}
 </style>
 </head>
 <body>
+
+<!-- ── Sticky nav bar ── -->
+<nav class="site-nav" id="siteNav" aria-label="Site navigation">
+  <a class="nav-home" id="navHome" href="https://hamsanandi.github.io/">Hamsanandi</a>
+  <div class="nav-links" id="navLinks"></div>
+</nav>
 
 <div class="page-header">
   <div class="lang-toggle" id="langToggle">
@@ -249,7 +336,8 @@ const STR = {
     aboutSectionClass: "about-section",
     aboutText: "Ramaprasad KV is a vaggeyakara, translator, and author working within the Karnataka Sangeeta and Kannada literary traditions. This site brings together his original compositions, translations, and writings.",
     footer: "Hosted on GitHub Pages", footerClass: "",
-    soon: "Coming soon", soonClass: "soon-badge"
+    soon: "Coming soon", soonClass: "soon-badge",
+    navHome: "Hamsanandi", navHomeClass: "nav-home"
   },
   kn: {
     siteName: "ಹಂಸಾನಂದಿ", siteNameClass: "site-name kn",
@@ -262,7 +350,8 @@ const STR = {
     aboutSectionClass: "about-section kn",
     aboutText: "ರಾಮಪ್ರಸಾದ್ ಕೆ.ವಿ. ಅವರು ಕರ್ನಾಟಕ ಸಂಗೀತ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯಲ್ಲಿ ಆಸಕ್ತರಾದ ಗಮಕಿ, ವಾಗ್ಗೇಯಕಾರು, ಅನುವಾದಕ ಮತ್ತು ಲೇಖಕರು. ಈ ತಾಣದಲ್ಲಿ ಅವರ ರಚನೆಗಳು, ಅನುವಾದಗಳು ಮತ್ತು ಬರಹಗಳನ್ನು ಒಟ್ಟುಗೂಡಿಸಲಾಗಿದೆ.",
     footer: "GitHub Pages ನಲ್ಲಿ ಪ್ರಕಾಶಿತ", footerClass: "kn",
-    soon: "ಸದ್ಯದಲ್ಲೇ ಬರಲಿವೆ", soonClass: "soon-badge kn"
+    soon: "ಸದ್ಯದಲ್ಲೇ ಬರಲಿವೆ", soonClass: "soon-badge kn",
+    navHome: "ಹಂಸಾನಂದಿ", navHomeClass: "nav-home kn"
   }
 };
 
@@ -308,6 +397,25 @@ const CARDS = [
 
 let lang = 'en';
 
+function renderNav(l) {
+  const s = STR[l];
+  const navHome = document.getElementById('navHome');
+  navHome.textContent = s.navHome;
+  navHome.className = s.navHomeClass;
+
+  const navLinks = document.getElementById('navLinks');
+  navLinks.innerHTML = '';
+  const linkClass = 'nav-link' + (l === 'kn' ? ' kn' : '');
+  CARDS.forEach(c => {
+    if (!c.live) return;
+    const a = document.createElement('a');
+    a.className = linkClass;
+    a.href = c.url;
+    a.textContent = c[l].title;
+    navLinks.appendChild(a);
+  });
+}
+
 function renderCards(l) {
   const s = STR[l];
   const grid = document.getElementById('cardsGrid');
@@ -325,7 +433,7 @@ function renderCards(l) {
   CARDS.filter(c => c.row === 2).forEach(c => row2el.appendChild(buildCard(c, l, s)));
   grid.appendChild(row2el);
 
-  // Row 3 — 2 cards centred side-by-side
+  // Row 3 — 2 cards centred
   const row3el = document.createElement('div');
   row3el.className = 'cards-row3';
   CARDS.filter(c => c.row === 3).forEach(c => row3el.appendChild(buildCard(c, l, s)));
@@ -368,6 +476,7 @@ function applyLang(l) {
   document.getElementById('footerEl').className          = 'footer ' + (s.footerClass || '');
   document.getElementById('btnEN').classList.toggle('active', l === 'en');
   document.getElementById('btnKN').classList.toggle('active', l === 'kn');
+  renderNav(l);
   renderCards(l);
 }
 
