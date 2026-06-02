@@ -22,6 +22,7 @@
   --c6-base: #6b4400; --c6-light: #e8c87a; --c6-mid: #c49030;
   --c7-base: #c2593f; --c7-light: #f9f0ee; --c7-mid: #d46a50;
   --c8-base: #5a1837; --c8-light: #f3e6ec; --c8-mid: #934b6f;
+  --c9-base: #5a1a7a; --c9-light: #ddc8f5; --c9-mid: #9050c8;
 }
 
 body {
@@ -150,11 +151,8 @@ body {
   gap: 16px; padding: 0 20px; margin-top: 16px;
 }
 .cards-row3 {
-  display: grid; grid-template-columns: repeat(2, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 16px; padding: 0 20px; margin-top: 16px;
-  /* Constrain to same total width as a 3-col row so 2 cards don't stretch too wide */
-  max-width: calc(860px * 2 / 3 + 20px);
-  margin-left: auto; margin-right: auto;
 }
 
 /* ── Card ── */
@@ -236,6 +234,11 @@ body {
 .card-c8 .card-title { color: var(--c8-base); }
 .card-c8:hover { border-color: var(--c8-mid); }
 
+.card-c9 .card-accent { background: var(--c9-base); }
+.card-c9 .card-icon-wrap { background: var(--c9-light); }
+.card-c9 .card-title { color: var(--c9-base); }
+.card-c9:hover { border-color: var(--c9-mid); }
+
 /* ── Coming soon badge ── */
 .soon-badge {
   display: inline-block; margin-top: 8px; padding: 2px 8px;
@@ -283,8 +286,7 @@ footer.kn { font-family: 'Noto Sans Kannada', sans-serif; }
   .nav-home { width: 100%; padding-bottom: 6px; line-height: 1.4; }
   .nav-links { width: 100%; overflow-x: auto; }
   .nav-link { font-size: 0.72rem; padding: 0 8px; line-height: 32px; }
-  .cards, .cards-row2 { grid-template-columns: repeat(2, 1fr); }
-  .cards-row3 { grid-template-columns: 1fr; max-width: 100%; }
+  .cards, .cards-row2, .cards-row3 { grid-template-columns: repeat(2, 1fr); }
   .lang-toggle { position: static; margin: 12px auto 0; }
   .page-header { padding: 24px 20px 20px; }
 }
@@ -392,7 +394,11 @@ const CARDS = [
   { icon:"▶", colorClass:"card-c5", url:"https://hamsanandi.github.io/reviews/",
     live:true, row:3,
     en:{ title:"Reviews", desc:"Book reviews and literary commentary — written articles and video reviews on YouTube." },
-    kn:{ title:"ವಿಮರ್ಶೆಗಳು", desc:"ಪುಸ್ತಕ ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ವಿಶ್ಲೇಷಣೆ — ಲೇಖನಗಳು ಮತ್ತು YouTube ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು." } }
+    kn:{ title:"ವಿಮರ್ಶೆಗಳು", desc:"ಪುಸ್ತಕ ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಸಾಹಿತ್ಯಿಕ ವಿಶ್ಲೇಷಣೆ — ಲೇಖನಗಳು ಮತ್ತು YouTube ವೀಡಿಯೊ ವಿಮರ್ಶೆಗಳು." } },
+  { icon:"🔮", colorClass:"card-c9", url:"https://hamsanandi.github.io/kaleidoscope/",
+    live:false, row:3,
+    en:{ title:"Kaleidoscope", desc:"Talks, seminars, classes, and cross-category explorations that don't fit neatly elsewhere — varied in form and subject." },
+    kn:{ title:"ವೈವಿಧ್ಯ", desc:"ಉಪನ್ಯಾಸಗಳು, ತರಗತಿಗಳು, ಸಂವಾದಗಳು ಮತ್ತು ವಿವಿಧ ವರ್ಗಗಳನ್ನು ಮೀರಿದ ವಿಷಯಗಳು — ರೂಪ ಮತ್ತು ವಿಷಯದಲ್ಲಿ ವೈವಿಧ್ಯಮಯ." } }
 ];
 
 let lang = 'en';
