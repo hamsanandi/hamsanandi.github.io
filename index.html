@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -427,19 +427,16 @@ function renderCards(l) {
   const grid = document.getElementById('cardsGrid');
   grid.innerHTML = '';
 
-  // Row 1 — 3-column grid
   const row1el = document.createElement('div');
   row1el.className = 'cards';
   CARDS.filter(c => c.row === 1).forEach(c => row1el.appendChild(buildCard(c, l, s)));
   grid.appendChild(row1el);
 
-  // Row 2 — 3 cards grid
   const row2el = document.createElement('div');
   row2el.className = 'cards-row2';
   CARDS.filter(c => c.row === 2).forEach(c => row2el.appendChild(buildCard(c, l, s)));
   grid.appendChild(row2el);
 
-  // Row 3 — 2 cards centred
   const row3el = document.createElement('div');
   row3el.className = 'cards-row3';
   CARDS.filter(c => c.row === 3).forEach(c => row3el.appendChild(buildCard(c, l, s)));
@@ -465,7 +462,9 @@ function buildCard(c, l, s) {
 }
 
 function applyLang(l) {
+  lang = l;
   const s = STR[l];
+  document.getElementById('htmlRoot').lang               = l === 'kn' ? 'kn' : 'en';
   document.getElementById('siteName').textContent        = s.siteName;
   document.getElementById('siteName').className          = s.siteNameClass;
   document.getElementById('siteTagline').textContent     = s.tagline;
